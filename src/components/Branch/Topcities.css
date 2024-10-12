@@ -1,0 +1,15 @@
+@keyframes borderExpand {
+    0% {
+      border-bottom-width: 2px;
+      border-left-width: 0;
+    }
+    100% {
+      border-bottom-width: 2px;
+      border-left-width: 100%;
+    }
+  }
+  
+  .hover\\:animate-borderExpand:hover {
+    animation: borderExpand 0.5s ease-in-out forwards;
+  }
+  

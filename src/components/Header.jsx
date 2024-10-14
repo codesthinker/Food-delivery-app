@@ -47,7 +47,7 @@ const Header = () => {
     return (
         <Fragment>
             <div>
-                <nav className='bg-white shadow-md fixed top-0 w-full flex items-center justify-between px-6 py-4 md:py-0 md:flex-row flex-col z-50'>
+                <nav className='bg-white  fixed top-0 w-full flex items-center justify-between px-6 py-4 md:py-0 md:flex-row flex-col z-50'>
                     <div className="flex justify-start items-center md:w-auto space-x-4">
                         <Link to={"/"} className="flex justify-center items-center">
                             <div className='h-16 w-24 flex items-center gap-2'>
@@ -140,7 +140,7 @@ const Header = () => {
                     />
                 )}
             </div>
-          
+
         </Fragment>
     );
 };

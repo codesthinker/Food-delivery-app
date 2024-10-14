@@ -18,6 +18,8 @@ import Restorent from './Pages/Restorent';
 import Delivery from './components/Restorent/Delivery';
 import Pickup from './components/Restorent/Pickup';
 import Shops from './components/Restorent/Shops';
+import SingleRecipie from './components/Restorent/SingleRecipie.jsx';
+
 
 // Main component to include routes
 const MainApp = () => {
@@ -25,8 +27,8 @@ const MainApp = () => {
 
   return (
     <Fragment>
-      {/* Conditionally render the Header only if not on the Login page */}
-      {location.pathname !== '/Login' && <Header />}
+      {location.pathname !== '/Login' && <Header/>}
+
 
       <Routes>
         <Route path='/' element={<Home />} />
@@ -44,6 +46,10 @@ const MainApp = () => {
         <Route path='/Delivery' element={<Delivery />} />
         <Route path='/Pickup' element={<Pickup />} />
         <Route path='/Shops' element={<Shops />} />
+        <Route path='/Shops/:id' element={<SingleRecipie />} />
+        
+        
+
 
 
       </Routes>

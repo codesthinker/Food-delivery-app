@@ -1,13 +1,28 @@
-import React, { Fragment } from 'react'
-import Restorent from '../../Pages/Restorent'
+import React from 'react'
+import Restorent from '../../Pages/Restorent';
+import FilterSidebar from './FilterSidebar';
 
 const Pickup = () => {
   return (
-    <Fragment>
-        <Restorent/>
-        <p>Pickup ipsum dolor sit amet consectetur, adipisicing elit. Saepe commodi expedita nulla voluptate ipsum doloremque optio aliquam. Quasi debitis voluptas est aliquam, accusamus et, quis quibusdam quae placeat facere nulla.</p>
-    </Fragment>
+    <div className='flex '>
+      
+      <div className='relative  top-12  left-0 w-[20%] h-[65vh]  mt-32 '>
+       <div className='fixed'>
+       <FilterSidebar />
+       </div>
+      </div>
+      
+    <div className='w-[80%]'>
+    <Restorent/>
+    </div>
+
+    
+     
+
+     
+      
+    </div>
   )
 }
 
-export default Pickup
+export default Pickup;

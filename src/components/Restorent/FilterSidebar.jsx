@@ -41,7 +41,7 @@ const FilterSidebar = () => {
             <label htmlFor="medium" className="text-base md:text-lg">Medium</label>
           </div>
         </div>
-        {/* Display the selected difficulty */}
+       
         <div className="mt-4">
           <p className="text-lg">Selected Difficulty: <span className="font-semibold">{difficulty}</span></p>
         </div>

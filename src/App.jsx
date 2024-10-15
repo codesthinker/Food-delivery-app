@@ -19,6 +19,8 @@ import Delivery from './components/Restorent/Delivery';
 import Pickup from './components/Restorent/Pickup';
 import Shops from './components/Restorent/Shops';
 import SingleRecipie from './components/Restorent/SingleRecipie.jsx';
+import Footer from './components/Footer.jsx';
+import Bottom from './components/Bottom.jsx';
 
 
 // Main component to include routes
@@ -53,6 +55,8 @@ const MainApp = () => {
 
 
       </Routes>
+      <Footer/>
+      <Bottom/>
     </Fragment>
   );
 };

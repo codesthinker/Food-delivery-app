@@ -8,14 +8,15 @@ const RestaurantProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [difficulty, setDifficulty] = useState(''); 
- 
+  const [difficulty, setDifficulty] = useState('');
+const [searchData, setSearchData] = useState([])
+const [search, setSearch] = useState('')
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
         const response = await fetch('https://dummyjson.com/recipes');
         const data = await response.json();
-        setRestaurants(data.recipes); 
+        setRestaurants(data.recipes);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -25,11 +26,31 @@ const RestaurantProvider = ({ children }) => {
     fetchRestaurants();
   }, []);
 
-//   console.log(restaurants);
-  const difficultyArray = restaurants?.filter((item)=>item.difficulty === difficulty)
-  console.log(difficultyArray)
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // const formdata = new FormData(e.target)
+    // const { search } = Object.fromEntries(formdata)
+    // console.log(search)
+    const url = `https://dummyjson.com/recipes/search?q=${search}`
+
+    const fetchSearchApi = async () => {
+      try {
+        const res = await fetch(url)
+        const data = await res.json()
+       
+        setSearchData(data.recipes)
+      } catch (error) {
+        console.log(error)
+
+      }
+    }
+    fetchSearchApi()
+  }
+
+  const difficultyArray = restaurants?.filter((item) => item.difficulty === difficulty)
+  
   return (
-    <RestaurantContext.Provider value={{ restaurants, loading, error ,difficultyArray,difficulty, setDifficulty }}>
+    <RestaurantContext.Provider value={{ restaurants, loading, error,searchData, handleSearchSubmit, difficultyArray, difficulty, setDifficulty ,setSearch,search }}>
       {children}
     </RestaurantContext.Provider>
   );

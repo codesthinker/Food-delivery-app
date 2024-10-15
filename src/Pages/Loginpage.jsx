@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners'; // Using react-spinners for the loader
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Icons for password visibility
 
+
 const Loginpage = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState(false);
@@ -70,7 +71,7 @@ const Loginpage = () => {
       // Simulate delay (1 second) before navigating
       setTimeout(() => {
         setLoading(false); // Hide loader spinner
-        navigate('/'); // Navigate to home page
+        navigate('/Restorent'); // Navigate to home page
       }, 1000);
     }
   };
@@ -81,7 +82,7 @@ const Loginpage = () => {
         {/* Navbar Section */}
         <nav className='flex fixed z-20 w-full justify-center items-center p-1 bg-gray-50 shadow-xl'>
           <div className='w-[90%] flex justify-between p-3'>
-            <Link to={"/"}>
+            <Link to={"/Restorent"}>
               <div className='flex justify-center items-center gap-2 text-[rgb(226,27,112)]'>
                 <SiFoodpanda className='font-semibold text-3xl' />
                 <p className='font-semibold text-2xl'>Foodpanda</p>

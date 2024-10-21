@@ -22,8 +22,7 @@ const Home = () => {
       <Topcities/>
       <Allcitys/>
       <Contry/>
-      <Footer/>
-      <Bottom/>
+     
       
 
 

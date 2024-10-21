@@ -125,10 +125,10 @@ const Header = () => {
                                 )}
                             </div>
                         ))}
-                        <div className='flex justify-end items-center'>
-                            <h1 className='hover:bg-gray-300 duration-500 cursor-pointer rounded-full p-3 '>
+                        <div className='flex  items-center'>
+                            <Link to={"/Byproduct"} className='hover:bg-gray-300 duration-500 cursor-pointer rounded-full p-3 '>
                                 <TfiBag />
-                            </h1>
+                            </Link>
                         </div>
                     </div>
                 </nav>

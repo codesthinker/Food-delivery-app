@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { RestaurantContext } from './Contextapi';
 
 const SingleRecipie = () => {
+    const {BuyProducts} = useContext(RestaurantContext)
     const { id } = useParams(); // Get the id from the route
     const [recipe, setRecipe] = useState(null); // State to store recipe data
     const [loading, setLoading] = useState(true); // State to track loading status
@@ -41,8 +43,9 @@ const SingleRecipie = () => {
             </div>
         );
     }
+   
 
-    // If recipe data is fetched, display it
+   
     return (
         <div className='mt-5 px-4 md:px-8 lg:px-20 py-10'>
 
@@ -94,6 +97,7 @@ const SingleRecipie = () => {
                 <p className='text-lg md:text-xl lg:text-2xl'>
                     <span className='font-semibold'>Ingredients:</span> {recipe.ingredients?.join(', ')}
                 </p>
+                <button onClick={BuyProducts(recipe)}   className='bg-pink-600 rounded p-2 text-white font-medium '>Buy Now</button>
             </div>
 
         </div>

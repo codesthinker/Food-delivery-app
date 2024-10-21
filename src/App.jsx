@@ -21,6 +21,8 @@ import Shops from './components/Restorent/Shops';
 import SingleRecipie from './components/Restorent/SingleRecipie.jsx';
 import Footer from './components/Footer.jsx';
 import Bottom from './components/Bottom.jsx';
+import ByProductData from './Pages/ByProductData.jsx';
+import PaymentMethood from './Pages/PaymentMethood.jsx';
 
 
 // Main component to include routes
@@ -49,6 +51,8 @@ const MainApp = () => {
         <Route path='/Pickup' element={<Pickup />} />
         <Route path='/Shops' element={<Shops />} />
         <Route path='/Shops/:id' element={<SingleRecipie />} />
+        <Route path='/Byproduct' element={<ByProductData />} />
+        <Route path='/PaymentMethood' element={<PaymentMethood />} />
         
         
 

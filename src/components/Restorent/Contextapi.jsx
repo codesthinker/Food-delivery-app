@@ -3,14 +3,15 @@ import React, { createContext, useState, useEffect } from 'react';
 // Create the context
 const RestaurantContext = createContext();
 
-
 const RestaurantProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [difficulty, setDifficulty] = useState('');
-const [searchData, setSearchData] = useState([])
-const [search, setSearch] = useState('')
+  const [searchData, setSearchData] = useState([]);
+  const [search, setSearch] = useState('');
+  const [addcart, setAddCart] = useState([]);
+
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
@@ -26,31 +27,66 @@ const [search, setSearch] = useState('')
     fetchRestaurants();
   }, []);
 
+  // Add to Cart functionality
+  const BuyProducts = (product) => {
+    const existingProduct = addcart.find((item) => item.id === product.id);
+
+    if (existingProduct) {
+   
+      setAddCart(
+        addcart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+     
+      setAddCart([...addcart, { ...product, quantity: 1 }]);
+    }
+  };
+
+const Remove = (id) =>{
+const addProduct = addcart.filter(item=>item.id !==id)
+setAddCart(addProduct)
+}
+
+  // Search functionality
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // const formdata = new FormData(e.target)
-    // const { search } = Object.fromEntries(formdata)
-    // console.log(search)
-    const url = `https://dummyjson.com/recipes/search?q=${search}`
+    const url = `https://dummyjson.com/recipes/search?q=${search}`;
 
     const fetchSearchApi = async () => {
       try {
-        const res = await fetch(url)
-        const data = await res.json()
-       
-        setSearchData(data.recipes)
+        const res = await fetch(url);
+        const data = await res.json();
+        setSearchData(data.recipes);
       } catch (error) {
-        console.log(error)
-
+        console.log(error);
       }
-    }
-    fetchSearchApi()
-  }
+    };
+    fetchSearchApi();
+  };
 
-  const difficultyArray = restaurants?.filter((item) => item.difficulty === difficulty)
-  
+  const difficultyArray = restaurants?.filter((item) => item.difficulty === difficulty);
+
   return (
-    <RestaurantContext.Provider value={{ restaurants, loading, error,searchData, handleSearchSubmit, difficultyArray, difficulty, setDifficulty ,setSearch,search }}>
+    <RestaurantContext.Provider
+      value={{
+        restaurants,
+        BuyProducts,
+        addcart,
+        error,
+        Remove,
+        searchData,
+        handleSearchSubmit,
+        difficultyArray,
+        difficulty,
+        setDifficulty,
+        setSearch,
+        search
+      }}
+    >
       {children}
     </RestaurantContext.Provider>
   );

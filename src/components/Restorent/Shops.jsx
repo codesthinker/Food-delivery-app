@@ -57,9 +57,9 @@ const Delivery = () => {
         </div>
       </div>
 
-      {/* Main Content */}
+    
       <div className='flex'>
-        {/* Sidebar */}
+       
         <div className='relative top-20 left-0 w-[20%] h-auto  mt-32 sidebar-parent'>
           <div className={`${isFixed ? 'fixed' : 'relative'} h-auto`}>
             <FilterSidebar />

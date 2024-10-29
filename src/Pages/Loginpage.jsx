@@ -82,7 +82,7 @@ const Loginpage = () => {
         {/* Navbar Section */}
         <nav className='flex fixed z-20 w-full justify-center items-center p-1 bg-gray-50 shadow-xl'>
           <div className='w-[90%] flex justify-between p-3'>
-            <Link to={"/Restorent"}>
+            <Link to={"/"}>
               <div className='flex justify-center items-center gap-2 text-[rgb(226,27,112)]'>
                 <SiFoodpanda className='font-semibold text-3xl' />
                 <p className='font-semibold text-2xl'>Foodpanda</p>

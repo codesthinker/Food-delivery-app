@@ -47,7 +47,7 @@ const Pandapay = () => {
         
         <div className='flex flex-col md:flex-row w-full md:w-[90%] justify-center md:gap-4'>
           <section className='w-full md:w-[25%] h-[30vh] rounded-lg shadow-lg flex flex-col justify-between p-4 bg-white'>
-            {/* Top section with logo and settings */}
+            
             <div className='flex justify-between items-center'>
               <div className='h-20 w-20'>
                 <img src={pic} alt="Pandapay logo" className='h-full w-full object-contain' />
@@ -95,10 +95,10 @@ const Pandapay = () => {
           {/* Left Section */}
           <section className='w-full md:w-[40%] flex flex-col items-start'>
             {/* Button with top-up icon */}
-            <button className='flex items-center space-x-2 bg-blue-500 text-white p-2 rounded-lg shadow-lg w-full md:w-auto'>
+            <Link to={"/Myprofile"} className='flex items-center space-x-2 bg-blue-500 text-white p-2 rounded-lg shadow-lg w-full md:w-auto'>
               <CiCreditCard1 className='text-xl' />
               <span>Top up</span>
-            </button>
+            </Link>
 
             {/* Steps to top-up section */}
             {topUpSteps.map(step => (

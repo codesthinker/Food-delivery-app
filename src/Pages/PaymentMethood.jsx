@@ -9,7 +9,6 @@ const PaymentMethood = () => {
       <div className='mt-24'>
         <section className='flex justify-center items-center'>
           <div className='w-[90%] sm:w-[70%] md:w-[50%] lg:w-[30%] mx-auto'>
-            {/* Back to previous page button */}
             <Link to={"/pandapay"} className='flex items-center space-x-2 hover:bg-gray-400 w-full sm:w-[70%] md:w-[60%] duration-300 rounded p-2 mb-4'>
               <MdOutlineKeyboardArrowLeft />
               <p>Back to Previous Page</p>

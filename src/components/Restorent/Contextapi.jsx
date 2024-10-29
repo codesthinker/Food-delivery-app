@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// Create the context
 const RestaurantContext = createContext();
 
 const RestaurantProvider = ({ children }) => {
@@ -11,6 +10,7 @@ const RestaurantProvider = ({ children }) => {
   const [searchData, setSearchData] = useState([]);
   const [search, setSearch] = useState('');
   const [addcart, setAddCart] = useState([]);
+  const [showmodel, setShowmodel] = useState(false)
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -84,7 +84,10 @@ setAddCart(addProduct)
         difficulty,
         setDifficulty,
         setSearch,
-        search
+        search,
+        showmodel,
+        setShowmodel
+
       }}
     >
       {children}

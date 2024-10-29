@@ -8,11 +8,11 @@ const Topcities = () => {
         { cname: "Faslabad", Link: "/fas" },
         { cname: "Multan", Link: "/mul" },
         { cname: "Islamabad", Link: "/isb" },
-        { cname: "Karachi", Link: "/krc" },
-        { cname: "Lodhran", Link: "/ldh" },
-        { cname: "Rawalpindi", Link: "/rlp" },
-        { cname: "Rawalpindi", Link: "/rlp" },
-        { cname: "Rawalpindi", Link: "/rlp" },
+        { cname: "Karachi", Link: "/Karachi" },
+        { cname: "Lodhran", Link: "/Lodhran" },
+        { cname: "Rawalpindi", Link: "/Rawulpindi" },
+        { cname: "Rawalpindi", Link: "/Rawulpindi" },
+        { cname: "Rawalpindi", Link: "/Rawulpindi" },
     ]
 
     return (

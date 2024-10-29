@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { RiContactsLine, RiArrowDropDownLine } from "react-icons/ri";
 import { SiFoodpanda } from "react-icons/si";
 import { TfiBag, TfiWorld } from "react-icons/tfi";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PiCrownSimpleFill } from "react-icons/pi";
 import { MdBookmarkBorder } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
@@ -13,19 +13,20 @@ import { LuHelpCircle } from "react-icons/lu";
 
 const Header = () => {
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+    const navigate = useNavigate(); 
 
     const navarry = [
         {
             Logo: <RiContactsLine />, nam: "Waleed", Log1: <RiArrowDropDownLine />,
             TogglerData: [
                 { p1: <SiFoodpanda />, p2: "Pandapay", Link: "/pandapay" },
-                { p1: <PiCrownSimpleFill />, id: 2, p2: "Subscribe to free Delivery", Link: "/subscription" },
-                { p1: <MdBookmarkBorder />, id: 3, p2: "Order & reordering", Link: "/order" },
+                { p1: <PiCrownSimpleFill />, p2: "Subscribe to free Delivery", Link: "/subscription" },
+                { p1: <MdBookmarkBorder />, p2: "Order & reordering", Link: "/order" },
                 { p1: <CgProfile />, p2: "Profile", Link: "/profile" },
                 { p1: <FaVihara />, p2: "Vouchers", Link: "/voucher" },
                 { p1: <GiAbstract015 />, p2: "Panda Rewards", Link: "/Reward" },
                 { p1: <LuHelpCircle />, p2: "Help Center", Link: "/help" },
-                { p1: <IoIosLogOut />, p2: "Logout", Link: "/logout" },
+                { p1: <IoIosLogOut />, p2: "Logout", Link: "/Login" }, 
             ]
         },
         {
@@ -39,15 +40,21 @@ const Header = () => {
     const handleItemClick = (index) => {
         setSelectedItemIndex(index === selectedItemIndex ? null : index);
     };
-
     const closeDropdown = () => {
         setSelectedItemIndex(null);
+    };
+
+    
+    const handleLogout = () => {
+        localStorage.removeItem("Login"); 
+        closeDropdown(); 
+        navigate("/login"); 
     };
 
     return (
         <Fragment>
             <div>
-                <nav className='bg-white  fixed top-0 w-full flex items-center justify-between px-6 py-4 md:py-0 md:flex-row flex-col z-50'>
+                <nav className='bg-white fixed top-0 w-full flex items-center justify-between px-6 py-4 md:py-0 md:flex-row flex-col z-50'>
                     <div className="flex justify-start items-center md:w-auto space-x-4">
                         <Link to={"/"} className="flex justify-center items-center">
                             <div className='h-16 w-24 flex items-center gap-2'>
@@ -110,10 +117,16 @@ const Header = () => {
                                     >
                                         {item.TogglerData.map((data, idx) => (
                                             <Link
-                                                to={data.Link}
+                                                to={data.Link || "#"}
                                                 key={idx}
                                                 className="flex items-center justify-start p-3 mb-2 hover:bg-pink-100 rounded"
-                                                onClick={closeDropdown}
+                                                onClick={() => {
+                                                    if (data.action === "logout") {
+                                                        handleLogout();
+                                                    } else {
+                                                        closeDropdown();
+                                                    }
+                                                }}
                                             >
                                                 <h2 className={`${idx === 0 ? 'text-pink-500' : ''} ${idx === 1 ? 'text-blue-500' : ''}`}>
                                                     {data.p1}
@@ -125,7 +138,7 @@ const Header = () => {
                                 )}
                             </div>
                         ))}
-                        <div className='flex  items-center'>
+                        <div className='flex items-center'>
                             <Link to={"/Byproduct"} className='hover:bg-gray-300 duration-500 cursor-pointer rounded-full p-3 '>
                                 <TfiBag />
                             </Link>
@@ -140,7 +153,6 @@ const Header = () => {
                     />
                 )}
             </div>
-
         </Fragment>
     );
 };

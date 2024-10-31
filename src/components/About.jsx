@@ -25,7 +25,7 @@ const About = () => {
             <div className='min-h-[110vh] mt-6 bg-[#F7F7F7] flex flex-col md:flex-row justify-end items-center'>
                 {find && <Model />} {/* Show the Model component when 'find' is true */}
                 <div className='w-full md:w-[50%] text-start p-5'>
-                    <h1 className='text-2xl md:text-3xl text-gray-900 font-bold'>
+                    <h1 className='text-xl sm:text-2xl md:text-3xl text-gray-900 font-bold'>
                         It's the food and groceries you love,<br /> delivered
                     </h1>
 
@@ -41,7 +41,7 @@ const About = () => {
 
                             <input
                                 type="text"
-                                className='w-full p-3 pt-6 pb-1 outline-none'
+                                className='w-full p-3 pt-6 pb-1 outline-none text-sm sm:text-base'
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 onFocus={() => setIsFocused(true)}
@@ -57,8 +57,8 @@ const About = () => {
                                             <SyncLoader size={8} color={'rgb(226,27,112)'} />
                                         ) : (
                                             <div className='flex gap-2'>
-                                                <MdMyLocation className='text-[rgb(226,27,112)] text-2xl font-semibold' />
-                                                <h1 className='font-semibold'>Locate me</h1>
+                                                <MdMyLocation className='text-[rgb(226,27,112)] text-xl sm:text-2xl font-semibold' />
+                                                <h1 className='font-semibold text-sm sm:text-base'>Locate me</h1>
                                             </div>
                                         )}
                                     </h1>
@@ -73,13 +73,13 @@ const About = () => {
                             </div>
                         </div>
 
-                        <button className='rounded p-2 bg-[rgb(226,27,112)] text-white hover:scale-125 duration-300 mt-4 md:mt-0'>
+                        <button className='rounded p-2 bg-[rgb(226,27,112)] text-white hover:scale-105 duration-300 mt-4 md:mt-0 text-sm sm:text-base'>
                             Find Food
                         </button>
                     </div>
                 </div>
 
-                <div className='w-full md:w-[40%] h-[40vh] md:h-[70vh] flex justify-end items-end mt-4 md:mt-0'>
+                <div className='w-full md:w-[40%] h-[30vh] sm:h-[40vh] md:h-[70vh] flex justify-end items-end mt-4 md:mt-0'>
                     <img src={bg} alt="Background" className='w-full h-full object-cover' />
                 </div>
             </div>

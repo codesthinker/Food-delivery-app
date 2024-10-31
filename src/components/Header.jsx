@@ -44,7 +44,6 @@ const Header = () => {
         setSelectedItemIndex(null);
     };
 
-    
     const handleLogout = () => {
         localStorage.removeItem("Login"); 
         closeDropdown(); 
@@ -54,84 +53,72 @@ const Header = () => {
     return (
         <Fragment>
             <div>
-                <nav className='bg-white fixed top-0 w-full flex items-center justify-between px-6 py-4 md:py-0 md:flex-row flex-col z-50'>
-                    <div className="flex justify-start items-center md:w-auto space-x-4">
-                        <Link to={"/"} className="flex justify-center items-center">
-                            <div className='h-16 w-24 flex items-center gap-2'>
-                                <h1 className='text-[rgb(226,27,112)] text-3xl'><SiFoodpanda /></h1>
-                                <h1 className='text-[rgb(226,27,112)] font-semibold text-2xl'>Foodpanda</h1>
-                            </div>
+                <nav className='bg-white fixed top-0 w-full flex items-center justify-between px-4 py-3 md:px-6 md:py-4 z-50'>
+                    <div className="flex items-center space-x-4">
+                        <Link to={"/"} className="flex items-center gap-2">
+                            <SiFoodpanda className='text-[rgb(226,27,112)] text-2xl md:text-3xl' />
+                            <h1 className='text-[rgb(226,27,112)] font-semibold text-xl md:text-2xl'>Foodpanda</h1>
                         </Link>
                     </div>
 
-                    <div className="flex items-center space-x-4 md:space-x-0 md:hidden">
-                        <div className="relative">
-                            <div
-                                onClick={() => handleItemClick(1)}
-                                className="flex cursor-pointer hover:bg-gray-300 p-1 duration-500 rounded justify-center items-center gap-1"
-                            >
-                                <h1 className='text-xl'>{navarry[1].Logo}</h1>
-                                <h1 className='font-semibold'>{navarry[1].nam}</h1>
-
-                                <h1 className={`text-3xl text-[rgb(226,27,112)] transform duration-300 ${selectedItemIndex === 1 ? 'rotate-180' : ''}`}>
-                                    {navarry[1].Log1}
-                                </h1>
-                            </div>
-                            {selectedItemIndex === 1 && (
-                                <div className="absolute top-full mt-3 w-32 bg-white shadow-lg rounded z-50">
-                                    {navarry[1].TogglerData.map((data, idx) => (
-                                        <Link
-                                            to={data.Link}
-                                            key={idx}
-                                            className="flex items-center justify-start p-3 mb-2 hover:bg-pink-100 rounded"
-                                            onClick={closeDropdown}
-                                        >
-                                            <h2 className={`${idx === 0 ? 'text-[rgb(226,27,112)]' : ''}`}>{data.p1}</h2>
-                                            <p className="ml-2">{data.p2}</p>
-                                        </Link>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="md:flex md:space-x-4 hidden">
+                    {/* Mobile Menu Toggle */}
+                    <div className="md:hidden flex space-x-4">
                         {navarry.map((item, index) => (
-                            <div key={index} className="relative cursor-pointer flex flex-col justify-center items-center gap-1">
+                            <div key={index} className="relative">
                                 <div
                                     onClick={() => handleItemClick(index)}
-                                    className="flex cursor-pointer hover:bg-gray-300 p-1 duration-500 rounded justify-center items-center gap-1"
+                                    className="flex items-center gap-1 cursor-pointer hover:bg-gray-300 p-1 duration-500 rounded"
                                 >
-                                    <h1 className='text-xl'>{item.Logo}</h1>
-                                    <h1 className='font-semibold'>{item.nam}</h1>
-                                    <h1 className={`text-3xl text-[rgb(226,27,112)] transform duration-300 ${selectedItemIndex === index ? 'rotate-180' : ''}`}>
-                                        {item.Log1}
-                                    </h1>
+                                    {item.Logo}
+                                    <span className="font-semibold">{item.nam}</span>
+                                    <RiArrowDropDownLine
+                                        className={`text-2xl transform duration-300 ${selectedItemIndex === index ? 'rotate-180' : ''}`}
+                                    />
                                 </div>
-
                                 {selectedItemIndex === index && (
-                                    <div
-                                        className={`absolute top-full mt-3 w-72 bg-white shadow-lg rounded z-50 right-0
-                                        transition-all duration-300 ease-out transform`}
-                                        style={{ transformOrigin: 'top' }}
-                                    >
+                                    <div className="absolute top-full mt-3 w-32 bg-white shadow-lg rounded z-50">
                                         {item.TogglerData.map((data, idx) => (
                                             <Link
                                                 to={data.Link || "#"}
                                                 key={idx}
-                                                className="flex items-center justify-start p-3 mb-2 hover:bg-pink-100 rounded"
-                                                onClick={() => {
-                                                    if (data.action === "logout") {
-                                                        handleLogout();
-                                                    } else {
-                                                        closeDropdown();
-                                                    }
-                                                }}
+                                                className="flex items-center p-3 mb-2 hover:bg-pink-100 rounded"
+                                                onClick={closeDropdown}
                                             >
-                                                <h2 className={`${idx === 0 ? 'text-pink-500' : ''} ${idx === 1 ? 'text-blue-500' : ''}`}>
-                                                    {data.p1}
-                                                </h2>
-                                                <p className="ml-2">{data.p2}</p>
+                                                {data.p1}
+                                                <span className="ml-2">{data.p2}</span>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex md:space-x-6">
+                        {navarry.map((item, index) => (
+                            <div key={index} className="relative">
+                                <div
+                                    onClick={() => handleItemClick(index)}
+                                    className="flex items-center gap-1 cursor-pointer hover:bg-gray-300 p-1 duration-500 rounded"
+                                >
+                                    {item.Logo}
+                                    <span className="font-semibold">{item.nam}</span>
+                                    <RiArrowDropDownLine
+                                        className={`text-3xl text-[rgb(226,27,112)] transform duration-300 ${selectedItemIndex === index ? 'rotate-180' : ''}`}
+                                    />
+                                </div>
+                                {selectedItemIndex === index && (
+                                    <div className="absolute top-full mt-3 w-72 bg-white shadow-lg rounded z-50 right-0">
+                                        {item.TogglerData.map((data, idx) => (
+                                            <Link
+                                                to={data.Link || "#"}
+                                                key={idx}
+                                                className="flex items-center p-3 mb-2 hover:bg-pink-100 rounded"
+                                                onClick={data.p2 === "Logout" ? handleLogout : closeDropdown}
+                                            >
+                                                {data.p1}
+                                                <span className="ml-2">{data.p2}</span>
                                             </Link>
                                         ))}
                                     </div>
@@ -139,13 +126,14 @@ const Header = () => {
                             </div>
                         ))}
                         <div className='flex items-center'>
-                            <Link to={"/Byproduct"} className='hover:bg-gray-300 duration-500 cursor-pointer rounded-full p-3 '>
+                            <Link to={"/Byproduct"} className='hover:bg-gray-300 p-3 duration-500 rounded-full'>
                                 <TfiBag />
                             </Link>
                         </div>
                     </div>
                 </nav>
 
+                {/* Overlay for closing dropdown */}
                 {selectedItemIndex !== null && (
                     <div
                         className="fixed inset-0 top-16 bg-black bg-opacity-50 z-40"

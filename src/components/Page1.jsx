@@ -13,28 +13,29 @@ export const Page1 = () => {
     return (
         <Fragment>
             {/* Header Section */}
-            <div className='h-[20vh] flex justify-start items-center px-10 w-[100%] bg-white'>
-                <h1 className='font-bold text-3xl'>You prepare the food, we handle the rest</h1>
+            <div className='h-[20vh] flex justify-start items-center px-5 sm:px-10 w-full bg-white'>
+                <h1 className='font-bold text-xl sm:text-2xl md:text-3xl'>You prepare the food, we handle the rest</h1>
             </div>
 
             <div
-                className='h-[70vh] w-full bg-cover bg-center z-0 relative'
+                className='h-[50vh] sm:h-[60vh] md:h-[70vh] w-full bg-cover bg-center z-0 relative'
                 style={{ backgroundImage: `url(${pic})` }}
             >
-                
-                <Fragment>
-    <div className='absolute -bottom-40 left-11 rounded shadow-lg p-5 md:p-8 lg:p-10 w-[90%] md:w-[60%] lg:w-[40%] bg-white'>
-        {getdata.map((item, index) => (
-            <div key={index} className={`mb-2 ${index === 0 ? 'font-bold text-xl md:text-2xl lg:text-3xl' : 'text-base md:text-lg lg:text-lg'}`}>
-                <p className='text-black'>{item}</p>
-            </div>
-        ))}
-        <Link to={'/Login'}>
-            <button className='bg-[rgb(226,27,112)] p-2 md:p-3 hover:scale-105 duration-300 rounded text-white text-sm md:text-base lg:text-lg '>Get Started</button>
-        </Link>
-    </div>
-</Fragment>
-
+                <div className='absolute -bottom-28 sm:-bottom-36 md:-bottom-40 left-5 sm:left-10 md:left-11 rounded shadow-lg p-4 sm:p-5 md:p-8 lg:p-10 w-[90%] sm:w-[70%] md:w-[60%] lg:w-[40%] bg-white'>
+                    {getdata.map((item, index) => (
+                        <div 
+                            key={index} 
+                            className={`mb-2 ${index === 0 ? 'font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl' : 'text-sm sm:text-base md:text-lg'}`}
+                        >
+                            <p className='text-black'>{item}</p>
+                        </div>
+                    ))}
+                    <Link to={'/Login'}>
+                        <button className='bg-[rgb(226,27,112)] p-2 sm:p-3 hover:scale-105 duration-300 rounded text-white text-sm sm:text-base lg:text-lg'>
+                            Get Started
+                        </button>
+                    </Link>
+                </div>
             </div>
         </Fragment>
     );
